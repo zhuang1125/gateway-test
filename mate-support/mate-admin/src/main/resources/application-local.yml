@@ -20,7 +20,12 @@ spring:
     user:
       name: admin
       password: matecloud
-
+  cloud:
+    nacos:
+      config:
+        server-addr: 172.18.252.95:8848
+      discovery:
+        server-addr: 172.18.252.95:8848
 management:
   endpoints:
     web:

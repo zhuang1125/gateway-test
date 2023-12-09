@@ -5,3 +5,10 @@ spring:
     name: @artifactId@
   kafka:
     bootstrap-servers: localhost:9092
+  cloud:
+    nacos:
+      config:
+        server-addr: 172.18.252.95:8848
+      discovery:
+        server-addr: 172.18.252.95:8848
+

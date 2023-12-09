@@ -13,6 +13,7 @@ import com.alicp.jetcache.support.JavaValueDecoder;
 import com.alicp.jetcache.support.JavaValueEncoder;
 import io.lettuce.core.ClientOptions;
 import io.lettuce.core.RedisClient;
+import io.lettuce.core.RedisURI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -33,7 +34,10 @@ import java.util.Map;
 public class JetCacheConfiguration {
 	@Bean
 	public RedisClient redisClient() {
-		RedisClient client = RedisClient.create("redis://127.0.0.1");
+		RedisURI uri = RedisURI.Builder.redis("172.18.252.95", 6379)
+				//.withPassword("123456")
+				.build();
+		RedisClient client = RedisClient.create(uri);
 		client.setOptions(ClientOptions.builder().
 				disconnectedBehavior(ClientOptions.DisconnectedBehavior.REJECT_COMMANDS)
 				.build());
